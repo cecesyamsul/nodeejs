@@ -1,4 +1,5 @@
 const express = require("express");
+const fs = require("fs");
 const app = express();
 const port = 3000;
 const expressLayouts = require("express-ejs-layouts");
@@ -6,12 +7,18 @@ app.listen(port, () => {
   console.log(`Run in ${port}`);
 });
 app.use(expressLayouts);
+app.use(express.static("public"));
+app.use((req, res, next) => {
+  console.log("Time :", Date.now());
+  next();
+});
 
 const kontak = [
   { id: 123, nama: "Dede", email: "email@gmail.com", hp: "0899776655" },
   { id: 1243, nama: "Dede", email: "email@gmail.com", hp: "0899776655" },
   { id: 12435, nama: "Dede", email: "email@gmail.com", hp: "0899776655" },
 ];
+
 app.set("view engine", "ejs");
 app.get("/", (req, res) => {
   const data = {
@@ -34,7 +41,7 @@ app.get("/kontak", (req, res) => {
 app.get("/about", (req, res) => {
   const data = {
     layout: "layouts/main-layouts",
-    Judul: "Daftar kontak",
+    Judul: "About",
     title: "Halaman kontak",
   };
   res.render("about", data);

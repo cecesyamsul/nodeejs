@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title  %> </title>
-</head>
-<body>
-    <h1><%= Judul  %></h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1><%= Judul %></h1>
     <table class="table table-responsive" border="1">
-        <thead>
-            <tr>
-                <th>No</th>
-            <th>Nama</th>
-            <th>email</th>
-            <th>Kontak</th>
-            </tr>
-            
-        </thead>
-        <tbody>
-            <% kontak.forEach(data => {%>
-            <tr>
-               
-                    <td><%= data.id %></td>
-                    <td><%= data.nama %></td>
-                    <td><%= data.email %></td>
-                    <td><%= data.hp %></td>
-                
-
-            </tr>
-            <%}); %>
-        </tbody>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama</th>
+          <th>email</th>
+          <th>Kontak</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(kontak.lenght < 1){%>
+        <tr>
+          <td colspan="4">Data Masih kosong</td>
+        </tr>
+        <% }else{ kontak.forEach(data => {%>
+        <tr>
+          <td><%= data.id %></td>
+          <td><%= data.nama %></td>
+          <td><%= data.email %></td>
+          <td><%= data.hp %></td>
+        </tr>
+        <%}) } %>
+      </tbody>
     </table>
-</body>
+  </body>
 </html>
