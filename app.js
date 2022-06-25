@@ -6,11 +6,6 @@ app.listen(port, () => {
   console.log(`Run in ${port}`);
 });
 app.use(expressLayouts);
-//res.send('Hello world');
-// res.json({
-//     nama : 'cece',
-//     umur : '20tahn'
-// });
 
 const kontak = [
   { id: 123, nama: "Dede", email: "email@gmail.com", hp: "0899776655" },
@@ -19,26 +14,26 @@ const kontak = [
 ];
 app.set("view engine", "ejs");
 app.get("/", (req, res) => {
-    const data = {
-        layout : 'layouts/main-layouts',
-        Judul: "Home",
-        title: "Welcome",
-      };
-      res.render("index", data);
+  const data = {
+    layout: "layouts/main-layouts",
+    Judul: "Home",
+    title: "Welcome",
+  };
+  res.render("index", data);
 });
 
 app.get("/kontak", (req, res) => {
   const data = {
-    layout : 'layouts/main-layouts',
+    layout: "layouts/main-layouts",
     Judul: "Daftar kontak",
     title: "Halaman kontak",
-    kontak : kontak,
+    kontak: kontak,
   };
   res.render("kontak", data);
 });
 app.get("/about", (req, res) => {
   const data = {
-    layout : 'layouts/main-layouts',
+    layout: "layouts/main-layouts",
     Judul: "Daftar kontak",
     title: "Halaman kontak",
   };
